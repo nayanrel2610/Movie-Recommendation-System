@@ -1,0 +1,8 @@
+# Ignore large machine learning models
+similarity.pkl
+
+# Ignore Python cache
+__pycache__/
+
+# Ignore Streamlit config if it contains secrets (optional, but good practice)
+.streamlit/
