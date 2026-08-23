@@ -16,10 +16,14 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 2. Fetch Movie Information Function ---
+# --- 2. Fetch Movie Information Function ---
 def fetch_movie_info(movie_id):
-    # Make sure your real API key goes here!
-    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=3b4b2c864f17cbca95e84764497e81d1&language=en-US&append_to_response=videos"
+    # NEW: Safely pull the API key from your secrets file
+    api_key = st.secrets["TMDB_KEY"]
     
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US&append_to_response=videos"
+    
+    # ... the rest of the function stays exactly the same
     # The disguise! This makes your Python code look like a standard Google Chrome browser
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
