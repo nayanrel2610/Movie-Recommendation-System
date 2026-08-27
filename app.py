@@ -1,8 +1,10 @@
-import streamlit as st
 import pickle
+import random
+import time
+
 import pandas as pd
 import requests
-import time
+import streamlit as st
 
 # --- 1. Page Configuration & Styling ---
 st.set_page_config(page_title="Movie Recommender", page_icon="🍿", layout="wide")
@@ -91,12 +93,40 @@ similarity = pickle.load(open('similarity.pkl', 'rb'))
 # --- 5. Streamlit UI ---
 st.title('🍿 Movie Recommender System')
 
+movie_titles = movies['title'].tolist()
+
+if 'selected_movie' not in st.session_state:
+    st.session_state.selected_movie = movie_titles[0]
+
+
+def select_random_movie():
+    """Select a different movie before Streamlit redraws the page."""
+    current_movie = st.session_state.selected_movie
+    available_movies = [title for title in movie_titles if title != current_movie]
+    st.session_state.selected_movie = random.choice(available_movies or movie_titles)
+
+
 selected_movie_name = st.selectbox(
     'Type or select a movie to get recommendations:',
-    movies['title'].values
+    movie_titles,
+    key='selected_movie'
 )
 
-if st.button('Recommend'):
+recommend_col, surprise_col = st.columns([1, 1])
+
+with recommend_col:
+    recommend_clicked = st.button('🎬 Recommend', type='primary', use_container_width=True)
+
+with surprise_col:
+    surprise_clicked = st.button(
+        '🎲 Surprise Me',
+        on_click=select_random_movie,
+        help='Pick a random movie and recommend something similar.',
+        use_container_width=True
+    )
+
+if recommend_clicked or surprise_clicked:
+    selected_movie_name = st.session_state.selected_movie
     with st.spinner('Connecting and finding the best movies for you...'):
         names, posters, overviews, trailers = recommend(selected_movie_name)
     
