@@ -6,6 +6,7 @@ A content-based movie recommendation application built with **Python**, **scikit
 
 ## 🚀 Features
 * **Sparse Content Search:** Builds a compact sparse feature index and calculates cosine similarity only when needed.
+* **Match Scores:** Shows the cosine-similarity percentage for every recommendation.
 * **Dynamic Details:** Fetches posters, summaries, and YouTube trailers from TMDB.
 * **Fast Repeat Visits:** Caches the model and TMDB responses with Streamlit.
 * **Reliable Networking:** Uses HTTPS verification, timeouts, status checks, and retry backoff.

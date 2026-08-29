@@ -21,7 +21,7 @@ def test_recommends_the_most_similar_movie(recommender: MovieRecommender) -> Non
 
     assert recommendations[0].title == "Space Two"
     assert recommendations[0].movie_id == 2
-    assert recommendations[0].similarity > 0
+    assert recommendations[0].similarity == pytest.approx(2 / 3)
 
 
 def test_rejects_an_unknown_title(recommender: MovieRecommender) -> None:

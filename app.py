@@ -119,6 +119,7 @@ if recommend_clicked or surprise_clicked:
         with column:
             st.image(movie_details.poster_url)
             st.markdown(f"**{recommendation.title}**")
+            st.caption(f"🎯 {recommendation.similarity:.0%} match")
 
             with st.expander("More Info"):
                 st.caption(movie_details.overview)
