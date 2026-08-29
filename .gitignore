@@ -1,10 +1,12 @@
-# Ignore large machine learning models
+# Legacy dense model (the app now builds a compact sparse index at runtime)
 similarity.pkl
 
-# Ignore Python cache
+# Python caches and local environments
 __pycache__/
+.pytest_cache/
+*.py[cod]
+.venv/
+venv/
 
-# Ignore Streamlit config if it contains secrets (optional, but good practice)
-.streamlit/
-
+# Keep secrets private while allowing the shared theme config to be tracked
 .streamlit/secrets.toml

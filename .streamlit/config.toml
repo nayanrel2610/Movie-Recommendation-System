@@ -1,0 +1,15 @@
+[theme]
+# Primary accent color (Red for a Netflix vibe)
+primaryColor = "#E50914"
+
+# Background color (Deep dark grey/black)
+backgroundColor = "#141414"
+
+# Secondary background color (Slightly lighter grey for the dropdown menu)
+secondaryBackgroundColor = "#1f1f1f"
+
+# Text color
+textColor = "#ffffff"
+
+# Font style (sans serif looks clean and modern)
+font = "sans serif"
